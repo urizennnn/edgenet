@@ -17,6 +17,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import ContactForm from "@/components/contact-form"
+import { CONTACT_EMAIL } from "@/lib/constants"
 
 export default function HomePage() {
   return (
@@ -113,6 +114,46 @@ export default function HomePage() {
             <div className="text-center">
               <div className="text-3xl lg:text-4xl font-bold text-teal-600 mb-2">99.9%</div>
               <div className="text-slate-600">Uptime</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Clips Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              IT &amp; SaaS Insights
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Explore our latest videos on technology and software solutions.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="IT Overview"
+                allowFullScreen
+                className="w-full h-full rounded"
+              />
+            </div>
+            <div className="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/9bZkp7q19f0"
+                title="SaaS Walkthrough"
+                allowFullScreen
+                className="w-full h-full rounded"
+              />
+            </div>
+            <div className="aspect-video">
+              <iframe
+                src="https://www.youtube.com/embed/3fumBcKC6RE"
+                title="Customer Success"
+                allowFullScreen
+                className="w-full h-full rounded"
+              />
             </div>
           </div>
         </div>
@@ -481,7 +522,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900">Email</p>
-                    <p className="text-slate-600">info@edgenetsolutions.net</p>
+                    <a className="text-slate-600 underline" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
                   </div>
                 </div>
                 <div className="flex items-center">
