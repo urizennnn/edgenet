@@ -40,8 +40,8 @@ export default function HomePage() {
       {/* Enhanced Navigation with Smooth Transitions */}
       <nav
         className={`transition-all duration-500 ease-in-out sticky top-0 z-50 ${isScrolled
-            ? "bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/90 shadow-lg border-b border-slate-200/50"
-            : "bg-transparent backdrop-blur-none"
+            ? "bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/90 shadow-lg border-b border-slate-200/50 opacity-100 pointer-events-auto"
+            : "bg-transparent backdrop-blur-none opacity-0 pointer-events-none"
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
