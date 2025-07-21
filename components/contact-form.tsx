@@ -10,27 +10,38 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useToast } from "@/hooks/use-toast"
+import { CONTACT_EMAIL } from "@/lib/constants"
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    const form = e.currentTarget
+    const data = new FormData(form)
+
+    const firstName = data.get("firstName") || ""
+    const lastName = data.get("lastName") || ""
+    const email = data.get("email") || ""
+    const company = data.get("company") || ""
+    const service = data.get("service") || ""
+    const budget = data.get("budget") || ""
+    const message = data.get("message") || ""
+
+    const body = encodeURIComponent(
+      `Name: ${firstName} ${lastName}\nEmail: ${email}\nCompany: ${company}\nService Interest: ${service}\nBudget: ${budget}\n\n${message}`
+    )
 
     toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours.",
+      title: "Opening email client...",
     })
 
-    setIsSubmitting(false)
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=Website%20Contact&body=${body}`
 
-    // Reset form
-    const form = e.target as HTMLFormElement
+    setIsSubmitting(false)
     form.reset()
   }
 
