@@ -55,9 +55,17 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-50 to-slate-100 py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-br from-slate-50 to-slate-100 py-20 lg:py-32">
+          <div className="absolute inset-0 overflow-hidden">
+            <iframe
+              src="https://www.youtube.com/embed/sQ22pm-xvrE?autoplay=1&mute=1&controls=0&loop=1&playlist=sQ22pm-xvrE"
+              title="Promotional Video"
+              className="w-full h-full pointer-events-none"
+              allow="autoplay; encrypted-media"
+            />
+          </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <Badge variant="secondary" className="mb-4">
@@ -119,45 +127,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Video Clips Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-              IT &amp; SaaS Insights
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Explore our latest videos on technology and software solutions.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="aspect-video">
-              <iframe
-                src="https://www.youtube.com/embed/Eweh8ePeUwg"
-                title="IT Overview"
-                allowFullScreen
-                className="w-full h-full rounded"
-              />
-            </div>
-            <div className="aspect-video">
-              <iframe
-                src="https://www.youtube.com/embed/UEHdYNXiIUU"
-                title="SaaS Walkthrough"
-                allowFullScreen
-                className="w-full h-full rounded"
-              />
-            </div>
-            <div className="aspect-video">
-              <iframe
-                src="https://www.youtube.com/embed/lkcmFBuj9JE"
-                title="Customer Success"
-                allowFullScreen
-                className="w-full h-full rounded"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* About Section */}
       <section id="about" className="py-20 bg-slate-50">
