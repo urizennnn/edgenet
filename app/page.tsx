@@ -133,7 +133,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="aspect-video">
               <iframe
-                src="https://youtu.be/Eweh8ePeUwg?si=G2OZ7kFwWdr23AdB"
+                src="https://www.youtube.com/embed/Eweh8ePeUwg"
                 title="IT Overview"
                 allowFullScreen
                 className="w-full h-full rounded"
@@ -141,7 +141,7 @@ export default function HomePage() {
             </div>
             <div className="aspect-video">
               <iframe
-                src="https://youtu.be/UEHdYNXiIUU?si=a5r7RuuXXs76EwAe"
+                src="https://www.youtube.com/embed/UEHdYNXiIUU"
                 title="SaaS Walkthrough"
                 allowFullScreen
                 className="w-full h-full rounded"
@@ -149,7 +149,7 @@ export default function HomePage() {
             </div>
             <div className="aspect-video">
               <iframe
-                src="https://youtu.be/lkcmFBuj9JE?si=7ii4jsIn9vvtMs4n"
+                src="https://www.youtube.com/embed/lkcmFBuj9JE"
                 title="Customer Success"
                 allowFullScreen
                 className="w-full h-full rounded"
