@@ -1,3 +1,6 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import {
   ArrowRight,
   CheckCircle,
@@ -15,90 +18,166 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
-import ContactForm from "@/components/contact-form"
 import { CONTACT_EMAIL } from "@/lib/constants"
+import { OptimizedImage } from "@/components/optimized-image"
+import { HeroBackground } from "@/components/hero-background"
+import ContactForm from "@/components/contact-form" // Declare the ContactForm variable
 
 export default function HomePage() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
+      {/* Enhanced Navigation with Smooth Transitions */}
+      <nav
+        className={`transition-all duration-500 ease-in-out sticky top-0 z-50 ${isScrolled
+            ? "bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/90 shadow-lg border-b border-slate-200/50"
+            : "bg-transparent backdrop-blur-none"
+          }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-3">
-              <Image
+              <OptimizedImage
                 src="/images/edgenet-logo-icon.png"
                 alt="Edgenet Solutions"
                 width={40}
                 height={40}
-                className="w-10 h-10"
+                className={`w-10 h-10 transition-all duration-500 ${isScrolled ? "brightness-100" : "brightness-0 invert"
+                  }`}
+                priority
+                quality={90}
               />
-              <span className="text-xl font-bold text-slate-900">Edgenet Solutions</span>
+              <span
+                className={`text-xl font-bold transition-all duration-500 ${isScrolled ? "text-slate-900" : "text-white drop-shadow-lg"
+                  }`}
+              >
+                Edgenet Solutions
+              </span>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#about" className="text-slate-600 hover:text-slate-900 transition-colors">
+              <a
+                href="#about"
+                className={`transition-all duration-500 font-medium ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/90 hover:text-white drop-shadow-md"
+                  }`}
+              >
                 About
               </a>
-              <a href="#services" className="text-slate-600 hover:text-slate-900 transition-colors">
+              <a
+                href="#services"
+                className={`transition-all duration-500 font-medium ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/90 hover:text-white drop-shadow-md"
+                  }`}
+              >
                 Services
               </a>
-              <a href="#why-choose-us" className="text-slate-600 hover:text-slate-900 transition-colors">
+              <a
+                href="#why-choose-us"
+                className={`transition-all duration-500 font-medium ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/90 hover:text-white drop-shadow-md"
+                  }`}
+              >
                 Why Us
               </a>
-              <a href="#contact" className="text-slate-600 hover:text-slate-900 transition-colors">
+              <a
+                href="#contact"
+                className={`transition-all duration-500 font-medium ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/90 hover:text-white drop-shadow-md"
+                  }`}
+              >
                 Contact
               </a>
-              <Button>Get Started</Button>
+              <Button className="bg-teal-600 hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Get Started
+              </Button>
             </div>
           </div>
         </div>
       </nav>
 
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-slate-50 to-slate-100 py-20 lg:py-32">
-          <div className="absolute inset-0 overflow-hidden">
-            <iframe
-              src="https://www.youtube.com/embed/sQ22pm-xvrE?autoplay=1&mute=1&controls=0&loop=1&playlist=sQ22pm-xvrE"
-              title="Promotional Video"
-              className="w-full h-full pointer-events-none"
-              allow="autoplay; encrypted-media"
-            />
+      {/* Hero Section with Optimized Background Video */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Optimized Background Video */}
+        <HeroBackground
+          videoId="UNMkLHzofQI"
+          fallbackImage="/placeholder.svg?height=1080&width=1920&text=SaaS+Technology+Background"
+        />
+
+        {/* Enhanced Multi-Layer Overlay for Better Text Readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/50 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/30 via-transparent to-slate-900/30 z-10"></div>
+
+        {/* Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center">
+          <div className="max-w-5xl mx-auto">
+            <Badge
+              variant="secondary"
+              className="mb-6 bg-teal-500/20 text-teal-200 border-teal-400/40 backdrop-blur-sm px-4 py-2 text-sm font-medium animate-fade-in-up"
+              style={{ animationDelay: "0.2s" }}
+            >
+              Innovative Software Solutions
+            </Badge>
+            <h1
+              className="text-4xl lg:text-7xl xl:text-8xl font-bold text-white mb-8 leading-tight animate-fade-in-up"
+              style={{
+                animationDelay: "0.4s",
+                textShadow: "0 4px 20px rgba(0,0,0,0.5), 0 2px 10px rgba(0,0,0,0.3)",
+              }}
+            >
+              Transform Your Business with{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-teal-500">
+                Cutting-Edge
+              </span>{" "}
+              Software
+            </h1>
+            <p
+              className="text-xl lg:text-2xl text-white/95 mb-12 leading-relaxed max-w-4xl mx-auto animate-fade-in-up"
+              style={{
+                animationDelay: "0.6s",
+                textShadow: "0 2px 10px rgba(0,0,0,0.5)",
+              }}
+            >
+              Bridge the gap between technology and success with our SaaS products and custom software development
+              services. We deliver solutions that scale with your ambitions.
+            </p>
+            <div
+              className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up"
+              style={{ animationDelay: "0.8s" }}
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-lg px-10 py-4 shadow-2xl hover:shadow-teal-500/25 transition-all duration-300 transform hover:scale-105"
+              >
+                Start Your Project
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white/40 text-white hover:bg-white/15 text-lg px-10 py-4 bg-white/10 backdrop-blur-sm transition-all duration-300 transform hover:scale-105 shadow-xl"
+              >
+                View Our Work
+              </Button>
+            </div>
           </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <Badge variant="secondary" className="mb-4">
-                Innovative Software Solutions
-              </Badge>
-              <h1 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
-                Transform Your Business with <span className="text-teal-600">Cutting-Edge</span> Software
-              </h1>
-              <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-                Bridge the gap between technology and success with our SaaS products and custom software development
-                services. We deliver solutions that scale with your ambitions.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700">
-                  Start Your Project
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-                <Button size="lg" variant="outline">
-                  View Our Work
-                </Button>
-              </div>
+        </div>
+
+        {/* Enhanced Scroll Indicator */}
+        <div
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-fade-in-up"
+          style={{ animationDelay: "1s" }}
+        >
+          <div className="animate-bounce">
+            <div className="w-6 h-10 border-2 border-white/60 rounded-full flex justify-center backdrop-blur-sm bg-white/10">
+              <div className="w-1 h-3 bg-white/80 rounded-full mt-2 animate-pulse"></div>
             </div>
-            <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl p-8 border">
-                <Image
-                  src="/images/edgenet-logo-full.png"
-                  alt="Edgenet Solutions"
-                  width={600}
-                  height={200}
-                  className="w-full h-auto"
-                />
-              </div>
-            </div>
+            <p className="text-white/70 text-xs mt-2 font-medium">Scroll</p>
           </div>
         </div>
       </section>
@@ -126,8 +205,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-
 
       {/* About Section */}
       <section id="about" className="py-20 bg-slate-50">
@@ -202,7 +279,6 @@ export default function HomePage() {
               Comprehensive software solutions designed to accelerate your business growth
             </p>
           </div>
-
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             {/* SaaS Products */}
             <Card className="border-2 border-teal-100">
@@ -249,7 +325,6 @@ export default function HomePage() {
                 </div>
               </CardContent>
             </Card>
-
             {/* Custom Development */}
             <Card className="border-2 border-slate-100">
               <CardHeader>
@@ -308,7 +383,6 @@ export default function HomePage() {
               Our unique approach and proven expertise set us apart in the competitive software development landscape
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="text-center">
               <CardHeader>
@@ -322,7 +396,6 @@ export default function HomePage() {
                 </p>
               </CardContent>
             </Card>
-
             <Card className="text-center">
               <CardHeader>
                 <Zap className="h-12 w-12 text-teal-600 mx-auto mb-4" />
@@ -335,7 +408,6 @@ export default function HomePage() {
                 </p>
               </CardContent>
             </Card>
-
             <Card className="text-center">
               <CardHeader>
                 <CheckCircle className="h-12 w-12 text-teal-600 mx-auto mb-4" />
@@ -348,7 +420,6 @@ export default function HomePage() {
                 </p>
               </CardContent>
             </Card>
-
             <Card className="text-center">
               <CardHeader>
                 <Clock className="h-12 w-12 text-teal-600 mx-auto mb-4" />
@@ -361,7 +432,6 @@ export default function HomePage() {
                 </p>
               </CardContent>
             </Card>
-
             <Card className="text-center">
               <CardHeader>
                 <BarChart3 className="h-12 w-12 text-teal-600 mx-auto mb-4" />
@@ -374,7 +444,6 @@ export default function HomePage() {
                 </p>
               </CardContent>
             </Card>
-
             <Card className="text-center">
               <CardHeader>
                 <Shield className="h-12 w-12 text-teal-600 mx-auto mb-4" />
@@ -392,6 +461,7 @@ export default function HomePage() {
       </section>
 
       {/* Company Values Section */}
+      {/* Company Values Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -400,7 +470,6 @@ export default function HomePage() {
               The principles that guide everything we do and every solution we create
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -412,7 +481,6 @@ export default function HomePage() {
                 development and cloud computing.
               </p>
             </div>
-
             <div className="text-center">
               <div className="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Award className="h-8 w-8 text-teal-600" />
@@ -423,7 +491,6 @@ export default function HomePage() {
                 and commitment to excellence.
               </p>
             </div>
-
             <div className="text-center">
               <div className="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-teal-600" />
@@ -434,7 +501,6 @@ export default function HomePage() {
                 long-term growth.
               </p>
             </div>
-
             <div className="text-center">
               <div className="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="h-8 w-8 text-teal-600" />
@@ -445,7 +511,6 @@ export default function HomePage() {
                 transparency.
               </p>
             </div>
-
             <div className="text-center">
               <div className="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <BarChart3 className="h-8 w-8 text-teal-600" />
@@ -456,7 +521,6 @@ export default function HomePage() {
                 provide cutting-edge solutions.
               </p>
             </div>
-
             <div className="text-center">
               <div className="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Shield className="h-8 w-8 text-teal-600" />
@@ -472,6 +536,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
+      {/* Contact Section */}
       <section id="contact" className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -481,7 +546,6 @@ export default function HomePage() {
               you achieve your technology goals.
             </p>
           </div>
-
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Get Your Free Consultation</h3>
@@ -492,7 +556,9 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900">Email</p>
-                    <a className="text-slate-600 underline" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+                    <a className="text-slate-600 underline" href={`mailto:${CONTACT_EMAIL}`}>
+                      {CONTACT_EMAIL}
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -515,7 +581,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-
             <ContactForm />
           </div>
         </div>
@@ -527,12 +592,14 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <Image
-                  src="/images/edgenet-logo-icon.png"
+                <OptimizedImage
+                  src="images/edgenet-logo-icon.png"
                   alt="Edgenet Solutions"
                   width={32}
                   height={32}
                   className="w-8 h-8 brightness-0 invert"
+                  loading="lazy"
+                  quality={85}
                 />
                 <span className="text-xl font-bold">Edgenet Solutions</span>
               </div>
@@ -593,10 +660,11 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 Edgenet Solutions. All rights reserved.</p>
+            <p>© 2024 Edgenet Solutions. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </div>
   )
 }
+
