@@ -65,6 +65,19 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: url('/images/seamless-blue-motif.png'); /* place motif image in public/images/seamless-blue-motif.png */
+    background-repeat: repeat-x; /* loop only on the X-axis */
+    background-size: auto 400px; /* tweak height to taste */
+    animation: scroll-background 60s linear infinite;
+  }
+}
+
+@keyframes scroll-background {
+  from {
+    background-position-x: 0;
+  }
+  to {
+    background-position-x: 1000px;
   }
 }
 
