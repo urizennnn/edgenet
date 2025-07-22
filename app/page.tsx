@@ -37,11 +37,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Enhanced Navigation with Smooth Transitions */}
+      {/* Enhanced Navigation with High Visibility */}
       <nav
-        className={`transition-all duration-500 ease-in-out sticky top-0 z-50 ${isScrolled
-            ? "bg-white/95 backdrop-blur-md supports-[backdrop-filter]:bg-white/90 shadow-lg border-b border-slate-200/50 opacity-100 pointer-events-auto"
-            : "bg-transparent backdrop-blur-none opacity-0 pointer-events-none"
+        className={`transition-all duration-500 ease-in-out sticky top-0 z-50 ${isScrolled ? "bg-white shadow-lg border-b border-slate-200/50" : "bg-slate-900 text-white"
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,13 +50,12 @@ export default function HomePage() {
                 alt="Edgenet Solutions"
                 width={40}
                 height={40}
-                className={`w-10 h-10 transition-all duration-500 ${isScrolled ? "brightness-100" : "brightness-0 invert"
-                  }`}
+                className={`w-10 h-10 transition-all duration-500 ${isScrolled ? "brightness-100" : "brightness-100"}`}
                 priority
                 quality={90}
               />
               <span
-                className={`text-xl font-bold transition-all duration-500 ${isScrolled ? "text-slate-900" : "text-white drop-shadow-lg"
+                className={`text-xl font-bold transition-all duration-500 ${isScrolled ? "text-slate-900" : "text-white"
                   }`}
               >
                 Edgenet Solutions
@@ -67,34 +64,75 @@ export default function HomePage() {
             <div className="hidden md:flex items-center space-x-8">
               <a
                 href="#about"
-                className={`transition-all duration-500 font-medium ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/90 hover:text-white drop-shadow-md"
+                className={`transition-all duration-500 font-medium relative group ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white hover:text-white/80"
                   }`}
               >
                 About
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? "bg-slate-900" : "bg-white"
+                    }`}
+                ></span>
               </a>
               <a
                 href="#services"
-                className={`transition-all duration-500 font-medium ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/90 hover:text-white drop-shadow-md"
+                className={`transition-all duration-500 font-medium relative group ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white hover:text-white/80"
                   }`}
               >
                 Services
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? "bg-slate-900" : "bg-white"
+                    }`}
+                ></span>
               </a>
               <a
                 href="#why-choose-us"
-                className={`transition-all duration-500 font-medium ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/90 hover:text-white drop-shadow-md"
+                className={`transition-all duration-500 font-medium relative group ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white hover:text-white/80"
                   }`}
               >
                 Why Us
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? "bg-slate-900" : "bg-white"
+                    }`}
+                ></span>
               </a>
               <a
                 href="#contact"
-                className={`transition-all duration-500 font-medium ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/90 hover:text-white drop-shadow-md"
+                className={`transition-all duration-500 font-medium relative group ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white hover:text-white/80"
                   }`}
               >
                 Contact
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${isScrolled ? "bg-slate-900" : "bg-white"
+                    }`}
+                ></span>
               </a>
-              <Button className="bg-teal-600 hover:bg-teal-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-                Get Started
+              <a
+                href="#contact"
+                className={`transition-all duration-500 shadow-lg hover:shadow-xl transform hover:scale-105 ${isScrolled ? "bg-teal-600 hover:bg-teal-700 text-white" : "bg-teal-600 hover:bg-teal-700 text-white"
+                  }`}
+              >
+                <Button
+                  className={`transition-all duration-500 ${isScrolled
+                      ? "bg-teal-600 hover:bg-teal-700 text-white"
+                      : "bg-teal-600 hover:bg-teal-700 text-white border-none"
+                    }`}
+                >
+                  Get Started
+                </Button>
+              </a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                className={`transition-all duration-500 ${isScrolled ? "text-slate-900 hover:bg-slate-100" : "text-white hover:bg-slate-800"
+                  }`}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
               </Button>
             </div>
           </div>
@@ -109,13 +147,16 @@ export default function HomePage() {
           fallbackImage="/placeholder.svg?height=1080&width=1920&text=SaaS+Technology+Background"
         />
 
-        {/* Enhanced Multi-Layer Overlay for Better Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/50 z-10"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/30 via-transparent to-slate-900/30 z-10"></div>
+        {/* Enhanced Multi-Layer Overlay for Better Integration */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/40 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/20 via-transparent to-slate-900/20 z-10"></div>
+
+        {/* Top gradient to blend with navigation */}
+        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black/40 to-transparent z-10"></div>
 
         {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 text-center">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-5xl mx-auto pt-16">
             <Badge
               variant="secondary"
               className="mb-6 bg-teal-500/20 text-teal-200 border-teal-400/40 backdrop-blur-sm px-4 py-2 text-sm font-medium animate-fade-in-up"
@@ -150,13 +191,15 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in-up"
               style={{ animationDelay: "0.8s" }}
             >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-lg px-10 py-4 shadow-2xl hover:shadow-teal-500/25 transition-all duration-300 transform hover:scale-105"
-              >
-                Start Your Project
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
+              <a href="#contact">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-lg px-10 py-4 shadow-2xl hover:shadow-teal-500/25 transition-all duration-300 transform hover:scale-105"
+                >
+                  Start Your Project
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </a>
               <Button
                 size="lg"
                 variant="outline"
@@ -592,15 +635,17 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <OptimizedImage
-                  src="images/edgenet-logo-icon.png"
-                  alt="Edgenet Solutions"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8 brightness-0 invert"
-                  loading="lazy"
-                  quality={85}
-                />
+                <div className="w-10 h-10 bg-white flex items-center justify-center">
+                  <OptimizedImage
+                    src="/images/edgenet-logo-icon.png"
+                    alt="Edgenet Solutions"
+                    width={32}
+                    height={32}
+                    className="w-8 h-8"
+                    loading="lazy"
+                    quality={85}
+                  />
+                </div>
                 <span className="text-xl font-bold">Edgenet Solutions</span>
               </div>
               <p className="text-slate-400 mb-4 max-w-md">
@@ -612,22 +657,22 @@ export default function HomePage() {
               <h4 className="font-semibold mb-4">Services</h4>
               <ul className="space-y-2 text-slate-400">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#services" className="hover:text-white transition-colors">
                     SaaS Products
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#services" className="hover:text-white transition-colors">
                     Custom Development
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#services" className="hover:text-white transition-colors">
                     Web Applications
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="#services" className="hover:text-white transition-colors">
                     Mobile Apps
                   </a>
                 </li>
@@ -660,7 +705,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="border-t border-slate-800 mt-8 pt-8 text-center text-slate-400">
-            <p>© 2024 Edgenet Solutions. All rights reserved.</p>
+            <p>© 2025 Edgenet Solutions. All rights reserved.</p>
           </div>
         </div>
       </footer>
