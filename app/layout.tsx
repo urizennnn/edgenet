@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
   },
+  icons: {
+    icon: "/icon.png",
+  },
     generator: 'v0.dev'
 }
 
@@ -45,7 +48,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.youtube.com" />
 
         {/* Resource hints */}
-        <link rel="preload" href="/images/edgenet-logo-icon.png" as="image" />
+        <link rel="preload" href="/icon.png" as="image" />
       </head>
       <body className={inter.className}>
         <ImagePreloader />

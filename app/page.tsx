@@ -120,6 +120,19 @@ export default function HomePage() {
                   }`}
                 ></span>
               </a>
+              <a
+                href="/ticket"
+                className={`transition-all duration-700 font-medium relative group ${
+                  isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/90 hover:text-white drop-shadow-md"
+                }`}
+              >
+                Ticketing
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${
+                    isScrolled ? "bg-slate-900" : "bg-white"
+                  }`}
+                ></span>
+              </a>
               <a href="#contact">
                 <Button
                   className={`transition-all duration-700 shadow-lg hover:shadow-xl transform hover:scale-105 font-semibold px-6 py-2 ${
@@ -649,17 +662,15 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-10 h-10 bg-white flex items-center justify-center">
-                  <OptimizedImage
-                    src="/images/edgenet-logo-icon.png"
-                    alt="Edgenet Solutions"
-                    width={32}
-                    height={32}
-                    className="w-8 h-8"
-                    loading="lazy"
-                    quality={85}
-                  />
-                </div>
+                <OptimizedImage
+                  src="/images/edgenet-logo-icon.png"
+                  alt="Edgenet Solutions"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                  loading="lazy"
+                  quality={85}
+                />
                 <span className="text-xl font-bold">Edgenet Solutions</span>
               </div>
               <p className="text-slate-400 mb-4 max-w-md">
@@ -708,6 +719,11 @@ export default function HomePage() {
                 <li>
                   <a href="#contact" className="hover:text-white transition-colors">
                     Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="/ticket" className="hover:text-white transition-colors">
+                    Ticketing
                   </a>
                 </li>
                 <li>
