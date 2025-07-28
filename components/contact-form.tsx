@@ -13,7 +13,6 @@ export default function ContactForm() {
   const [email, setEmail] = useState("")
   const [company, setCompany] = useState("")
   const [serviceInterest, setServiceInterest] = useState("")
-  const [projectBudget, setProjectBudget] = useState("")
   const [message, setMessage] = useState("")
 
   const handleSubmit = (e) => {
@@ -24,7 +23,6 @@ export default function ContactForm() {
       email,
       company,
       serviceInterest,
-      projectBudget,
       message,
     })
     // Reset form
@@ -33,7 +31,6 @@ export default function ContactForm() {
     setEmail("")
     setCompany("")
     setServiceInterest("")
-    setProjectBudget("")
     setMessage("")
   }
 
@@ -118,26 +115,6 @@ export default function ContactForm() {
               <SelectItem value="mobile-apps">Mobile Apps</SelectItem>
               <SelectItem value="enterprise-systems">Enterprise Systems</SelectItem>
               <SelectItem value="consultation">Consultation</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        {/* Project Budget */}
-        <div>
-          <Label htmlFor="projectBudget" className="text-slate-700 font-medium">
-            Project Budget
-          </Label>
-          <Select value={projectBudget} onValueChange={setProjectBudget}>
-            <SelectTrigger className="mt-1">
-              <SelectValue placeholder="Select budget range" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="under-10k">Under $10,000</SelectItem>
-              <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
-              <SelectItem value="25k-50k">$25,000 - $50,000</SelectItem>
-              <SelectItem value="50k-100k">$50,000 - $100,000</SelectItem>
-              <SelectItem value="100k-plus">$100,000+</SelectItem>
-              <SelectItem value="discuss">Let's discuss</SelectItem>
             </SelectContent>
           </Select>
         </div>
