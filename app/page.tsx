@@ -501,7 +501,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900">Phone</p>
-                    <p className="text-slate-600">(555) 123-4567</p>
+                    <p className="text-slate-600">+234 705 568 6868</p>
                   </div>
                 </div>
                 <div className="flex items-center">
